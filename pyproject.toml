@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sap-ai-daily"
+version = "0.1.0"
+description = "可追溯的 AI・SAP 科技早报 Dry Run 管道"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.28,<1", "feedparser>=6,<7", "pydantic>=2.10,<3", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[project.scripts]
+sap-ai-daily = "sap_ai_daily.cli:main"
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
